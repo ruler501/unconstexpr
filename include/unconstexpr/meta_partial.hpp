@@ -19,8 +19,12 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+#ifndef _UNCONSTEXPR_META_PARTIAL_HPP_
+#define _UNCONSTEXPR_META_PARTIAL_HPP_
+
 #include <utility>
-#include "meta_counter.hpp"
+
+#include "unconstexpr/meta_counter.hpp"
 
 namespace unconstexpr
 {
@@ -54,3 +58,4 @@ namespace unconstexpr
     template<size_t C = uniq_value::value<> >
     struct partial_it : meta_counter<size_t, 0, 1, C> {};
 }
+#endif

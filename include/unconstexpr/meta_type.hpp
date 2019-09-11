@@ -19,10 +19,10 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+#ifndef _UNCONSTEXPR_META_TYPE_HPP_
+#define _UNCONSTEXPR_META_TYPE_HPP_
 
-#pragma once
-
-#include "meta_counter.hpp"
+#include "unconstexpr/meta_counter.hpp"
 
 namespace unconstexpr
 {
@@ -91,3 +91,5 @@ namespace unconstexpr
         };
     };
 }
+
+#endif

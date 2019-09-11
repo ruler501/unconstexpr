@@ -19,9 +19,10 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-#include "unconstexpr.hpp"
+#include "unconstexpr/unconstexpr.hpp"
+#include "unconstexpr/tools/auto_testing.hpp"
+
 using namespace unconstexpr;
-#include "tools/auto_testing.hpp"
 
 void unit_launcher();
 

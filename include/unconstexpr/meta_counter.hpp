@@ -21,10 +21,10 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+#ifndef _UNCONSTEXPR_META_COUNTER_HPP_
+#define _UNCONSTEXPR_META_COUNTER_HPP_
 
-#pragma once
-
-#include "uniq_value.hpp"
+#include "unconstexpr/uniq_value.hpp"
 
 namespace unconstexpr
 {
@@ -77,3 +77,5 @@ namespace unconstexpr
     template <class Type = int, Type Start = 0, Type It = 1, unsigned I = uniq_value::value<> >
     using meta_counter = detail::meta_counter<detail::unique_type<I>, Type, Start, It>;
 }
+
+#endif

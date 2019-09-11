@@ -19,55 +19,53 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-#pragma once
+#ifndef _UNCONSTEXPR_TYPE_MAP_HPP_
+#define _UNCONSTEXPR_TYPE_MAP_HPP_
 
 #include <type_traits>
 
-namespace unconstexpr
-{
-    namespace detail
+namespace unconstexpr::detail {
+    template <class...> struct map;
+
+    template <class Key, class Value>
+    struct map_item
     {
-        template <class...> struct map;
+        using key = Key;
+        using value = Value;
+    };
+
+    template <class Key, class Value, class T>
+    using map_replace_tool = std::conditional_t<std::is_same_v<Key, typename T::key>,
+                                                map_item<Key, Value>,
+                                                T >;
+
+    struct no_such_key {};
+
+    template <class Key, class T, class... Args>
+    constexpr auto map_get_tool()
+    {
+        if constexpr (std::is_same_v<Key, typename T::key>) return typename T::value{};
+        else if constexpr (sizeof...(Args) == 0) return no_such_key{};
+        else return map_get_tool<Key, Args...>();
+    };
+
+    template <class... Args>
+    struct map
+    {
+        template <class Key>
+        static constexpr bool has_key = (std::is_same_v<Key, typename Args::key> || ...);
 
         template <class Key, class Value>
-        struct map_item
-        {
-            using key = Key;
-            using value = Value;
-        };
+        using set = std::conditional_t<has_key<Key>,
+                                       map<map_replace_tool<Key, Value, Args>...>,
+                                       map<Args..., map_item<Key, Value> > >;
 
-        template <class Key, class Value, class T>
-        using map_replace_tool = std::conditional_t<std::is_same_v<Key, typename T::key>,
-                                                    map_item<Key, Value>,
-                                                    T >;
+        template <class Key>
+        using get = std::conditional_t<has_key<Key>,
+                                       decltype(map_get_tool<Key, Args...>()),
+                                       no_such_key>;
 
-        struct no_such_key {};
-
-        template <class Key, class T, class... Args>
-        constexpr auto map_get_tool()
-        {
-            if constexpr (std::is_same_v<Key, typename T::key>) return typename T::value{};
-            else if constexpr (sizeof...(Args) == 0) return no_such_key{};
-            else return map_get_tool<Key, Args...>();
-        };
-
-        template <class... Args>
-        struct map
-        {
-            template <class Key>
-            static constexpr bool has_key = (std::is_same_v<Key, typename Args::key> || ...);
-
-            template <class Key, class Value>
-            using set = std::conditional_t<has_key<Key>,
-                                           map<map_replace_tool<Key, Value, Args>...>,
-                                           map<Args..., map_item<Key, Value> > >;
-
-            template <class Key>
-            using get = std::conditional_t<has_key<Key>,
-                                           decltype(map_get_tool<Key, Args...>()),
-                                           no_such_key>;
-
-            using clear = map<>;
-        };
-    }
+        using clear = map<>;
+    };
 }
+#endif

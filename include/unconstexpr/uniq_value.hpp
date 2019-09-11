@@ -19,7 +19,8 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-#pragma once
+#ifndef _UNCONSTEXPR_UNIQ_VALUE_HPP_
+#define _UNCONSTEXPR_UNIQ_VALUE_HPP_
 
 namespace unconstexpr
 {
@@ -62,3 +63,5 @@ namespace unconstexpr
         static constexpr unsigned value = N;
     };
 }
+
+#endif

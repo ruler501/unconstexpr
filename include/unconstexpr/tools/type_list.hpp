@@ -19,8 +19,8 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-
-#pragma once
+#ifndef _UNCONSTEXPR_TYPE_LIST_HPP_
+#define _UNCONSTEXPR_TYPE_LIST_HPP_
 
 #include <utility>
 
@@ -89,3 +89,4 @@ namespace unconstexpr::detail
             Select<0,decltype(tool_remove<toRemove>(std::make_index_sequence<safe_sub(sizeof...(Args), 1)>{}))>::type;
     };
 }
+#endif

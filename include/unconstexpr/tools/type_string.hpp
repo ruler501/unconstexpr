@@ -19,7 +19,8 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-#pragma once
+#ifndef _UNCONSTEXPR_TYPE_STRING_HPP_
+#define _UNCONSTEXPR_TYPE_STRING_HPP_
 
 #include <string_view>
 #include <utility>
@@ -104,3 +105,5 @@ constexpr auto operator""_tstr()
 {
     return unconstexpr::detail::type_string<C, chars...>{};
 }
+
+#endif

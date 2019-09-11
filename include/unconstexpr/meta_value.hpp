@@ -19,12 +19,16 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-#pragma once
+#ifndef _UNCONSTEXPR_META_VALUE_HPP_
+#define _UNCONSTEXPR_META_VALUE_HPP_
+
+#define carg(...) ([]{return __VA_ARGS__; })
 
 #include <type_traits>
 #include <utility>
 #include <algorithm>
-#include "meta_type.hpp"
+
+#include "unconstexpr/meta_type.hpp"
 
 namespace unconstexpr
 {
@@ -139,4 +143,4 @@ namespace unconstexpr
     };
 }
 
-#define carg(...) ([]{return __VA_ARGS__; })
+#endif

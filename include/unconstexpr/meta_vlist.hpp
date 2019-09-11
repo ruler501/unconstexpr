@@ -19,11 +19,11 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+#ifndef _UNCONSTEXPR_META_VLIST_HPP_
+#define _UNCONSTEXPR_META_VLIST_HPP_
 
-#pragma once
-
-#include "meta_type.hpp"
-#include "include/unconstexpr/tools/var_list.hpp"
+#include "unconstexpr/meta_type.hpp"
+#include "unconstexpr/tools/var_list.hpp"
 
 namespace unconstexpr
 {
@@ -102,3 +102,5 @@ namespace unconstexpr
         }
     };
 }
+
+#endif
