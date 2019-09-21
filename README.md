@@ -1,4 +1,5 @@
 # unconstexpr
+## Broken on Clang 8+ and GCC 9+
 
 #### An ODR violation story
 a c++17 header library that implements variant constexpr functions and types.
